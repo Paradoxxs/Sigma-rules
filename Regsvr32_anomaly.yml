@@ -1,0 +1,34 @@
+title: Regsvr32 Anomaly
+status: experimental
+description: Detects various anomalies in relation to regsvr32.exe
+author: Adam
+date: 2021/03/31
+tags:
+    - attack.defense_evasion
+    - attack.t1218.010      
+    - attack.execution  # an old one  
+    - attack.t1117      # an old one  
+    - car.2019-04-002
+    - car.2019-04-003
+
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection1:
+        CommandLine: '*regsvr32*'
+        FileName: 'wmic.exe'
+    selection2:
+      FileName: 'regsvr32.exe'
+    selection3: 
+        CommandLine: '*DriverAutomationLibrary.dll*'
+    selection4: 
+        ParentName: 'AppHelperCap.exe'
+
+    condition: selection1 or selection2 and not selection3 and not selection4
+fields:
+    - CommandLine
+    - ParentCommandLine
+falsepositives:
+    - Unknown
+level: high

@@ -1,0 +1,25 @@
+title: Netsh helper dll
+
+description: Netsh helper dll
+references:
+    - https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1546.007/T1546.007.md
+date: 2021/03/18
+tags:
+    - attack.privilege-escalation
+    - attack.t11546.007        
+status: experimental
+author: Adam
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection1:
+        CommandLine:
+            - '*netsh*'
+    selection2:
+        CommandLine:
+            - 'add helper'
+    condition: selection1 and selection2
+falsepositives:
+    - Legitimate administration
+level: medium
