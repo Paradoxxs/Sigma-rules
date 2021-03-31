@@ -24,8 +24,12 @@ detection:
         CommandLine: '*DriverAutomationLibrary.dll*'
     selection4: 
         ParentName: 'AppHelperCap.exe'
+    selection5: 
+        CommandLine: "*program files*"
+    selection6: 
+        CommandLine: "*windows*"
 
-    condition: selection1 or selection2 and not selection3 and not selection4
+    condition: selection1 or selection2 and not selection3 and not selection4 and not selection5 and not selection6
 fields:
     - CommandLine
     - ParentCommandLine
