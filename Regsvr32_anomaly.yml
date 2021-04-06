@@ -28,8 +28,10 @@ detection:
         CommandLine: "*program files*"
     selection6: 
         CommandLine: "*windows*"
+    selection7:
+        CommandLine: "*Microsoft.Teams.AddinLoader.dll*"    
 
-    condition: selection1 or selection2 and not selection3 and not selection4 and not selection5 and not selection6
+    condition: selection1 or selection2 and not selection3 and not selection4 and not selection5 and not selection6 and not selection7
 fields:
     - CommandLine
     - ParentCommandLine
